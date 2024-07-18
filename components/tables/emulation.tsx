@@ -8,6 +8,7 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/table";
+import CalificationStars from "@/components/calification-stars";
 
 export default function EmulationTable({ data }: { data: any }) {
   const columns = [
@@ -40,7 +41,9 @@ export default function EmulationTable({ data }: { data: any }) {
           <TableRow key={item.id}>
             <TableCell>{item.nombre}</TableCell>
             <TableCell>{item.consola.value}</TableCell>
-            <TableCell>{item.calificacion}</TableCell>
+            <TableCell>
+              <CalificationStars numStars={item.calificacion} />
+            </TableCell>
             <TableCell>
               <a href={item.link} target="_blank" rel="noreferrer">
                 {item.link}
