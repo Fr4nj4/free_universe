@@ -6,7 +6,7 @@ export default async function DocsPage() {
   const data = await getEmulators();
 
   //console.log("consulta notions", data);
-  return (
+  return ( 
     <div>
       <h1 className={title()}>Universo Emulacion</h1>
 
@@ -16,7 +16,7 @@ export default async function DocsPage() {
         encontrar un listado de los juegos compatibles con cada consola.
       </p>
 
-      <EmulationTable data={data.data} />
+      <EmulationTable data={data.items} />
     </div>
   );
 }
