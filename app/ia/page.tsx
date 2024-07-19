@@ -1,9 +1,10 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { title } from "@/components/primitives";
+
 import Chatbot from "./components/chatbot/chatbot";
 import Chatbotv2 from "./components/chatbot/chatbotv2";
+import { title } from "@/components/primitives";
 
 export default function PricingPage() {
   return (

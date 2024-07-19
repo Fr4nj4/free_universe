@@ -9,6 +9,8 @@ import {
 } from "@nextui-org/react";
 import { Input } from "@nextui-org/input";
 import { faPaperPlane as sendIcon } from "@fortawesome/free-solid-svg-icons";
+
+import { faRobot as botIcon } from "@fortawesome/free-solid-svg-icons";
 import { useChat } from "ai/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MessageCard from "./messageCard";
@@ -32,67 +34,64 @@ export default function Chatbotv2() {
   ]);
   const { messages, isLoading, input, handleInputChange, handleSubmit } =
     useChat({
-      body: model,
+      body: { model: model },
     });
 
   return (
     <Card className="w-full">
       <CardHeader className="justify-between">
-        <div className="flex gap-5">
+        <div className="flex w-full items-center gap-3">
           <Avatar
             isBordered
+            icon={<FontAwesomeIcon color="primary" icon={botIcon} />}
             radius="full"
             size="md"
-            src="https://nextui.org/avatars/avatar-1.png"
           />
-          <div className="flex flex-col gap-1 items-start justify-center">
-            <h4 className="text-small font-semibold leading-none text-default-600">
-              {models[model]}
-            </h4>
-          </div>
+
+          <ModelSelection handleSelection={setmodel} value={model} />
         </div>
-        <ModelSelection handleSelection={setmodel} value={model} />
       </CardHeader>
       <CardBody className="px-3 py-0 text-small text-default-400">
         {messages.map((message, index) => (
           <div
+            key={index}
             className={`gap-5 w-full flex justify-${message.role == "user" ? "end" : "start"}`}
           >
             <MessageCard
               key={index}
-              user_type={message.role}
-              ai_model={model}
+              ai_model={model[0]}
               message={message.content}
+              user_type={message.role}
             />
           </div>
         ))}
       </CardBody>
       <CardFooter className="gap-3">
         <form
-          onSubmit={() => handleSubmit(event)}
           className="flex flex-row w-full h-auto items-center justify-center gap-2"
+          onSubmit={() => handleSubmit(event)}
         >
           <Input
             disabled={isLoading}
-            type="text"
             placeholder="Escribe tu mensaje aquí..."
+            type="text"
             value={input}
             onChange={handleInputChange}
           />
           <Spacer y={0.5} />
 
           <Button
-            isLoading={isLoading}
-            className="p-4 w-1/8"
             fullWidth
-            size="lg"
             isIconOnly
+            aria-label="Enviar"
+            className="p-4 w-1/8"
             color="primary"
+            isLoading={isLoading}
+            size="lg"
             type="submit"
             variant="light"
-            aria-label="Enviar"
           >
-            <FontAwesomeIcon icon={sendIcon} color="primary" />
+            <FontAwesomeIcon color="primary" icon={sendIcon} />
           </Button>
         </form>
       </CardFooter>

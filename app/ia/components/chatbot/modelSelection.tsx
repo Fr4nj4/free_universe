@@ -9,6 +9,7 @@ export default function ModelSelection({
   handleSelection: any;
   value: any;
 }) {
+  console.log(value);
   const models: any = [
     {
       value: "OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5",
@@ -26,7 +27,7 @@ export default function ModelSelection({
       variant="underlined"
       label="Modelo"
       size="sm"
-      selectedKeys={value || "OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5"}
+      selectedKeys={value}
       onSelectionChange={handleSelection}
     >
       {models.map((model: any) => (
