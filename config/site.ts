@@ -13,8 +13,8 @@ export const siteConfig = {
       href: "/emulacion",
     },
     {
-      label: "Pricing",
-      href: "/pricing",
+      label: "IA",
+      href: "/ia",
     },
     {
       label: "Blog",

@@ -8,6 +8,7 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/table";
+import { Link } from "@nextui-org/link";
 import CalificationStars from "@/components/calification-stars";
 
 export default function EmulationTable({ data }: { data: any }) {
@@ -24,10 +25,6 @@ export default function EmulationTable({ data }: { data: any }) {
       key: "calificacion",
       label: "Calificacion",
     },
-    {
-      key: "link",
-      label: "Link",
-    },
   ];
 
   console.log("data", data);
@@ -39,15 +36,14 @@ export default function EmulationTable({ data }: { data: any }) {
       <TableBody>
         {data.map((item: any) => (
           <TableRow key={item.id}>
-            <TableCell>{item.nombre}</TableCell>
+            <TableCell>
+              <Link color="warning" isExternal showAnchorIcon href={item.link}>
+                {item.nombre}
+              </Link>
+            </TableCell>
             <TableCell>{item.consola.value}</TableCell>
             <TableCell>
               <CalificationStars numStars={item.calificacion} />
-            </TableCell>
-            <TableCell>
-              <a href={item.link} target="_blank" rel="noreferrer">
-                {item.link}
-              </a>
             </TableCell>
           </TableRow>
         ))}
