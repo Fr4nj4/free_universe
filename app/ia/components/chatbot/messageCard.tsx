@@ -24,23 +24,31 @@ export default function MessageCard({
   /*   const avatar = user_type === "user" ? <Avatar isBordered color="success" src="https://i.pravatar.cc/150" />: <Avatar isBordered color="success" src="https://i.pravatar.cc/150" />;
    */
   return (
-    <Card className={" w-fit my-3"} isBlurred>
-      <CardHeader className={"flex gap-3 "}>
-        <Avatar
-          size="sm"
-          isBordered
-          icon={
-            <FontAwesomeIcon icon={user_type == "user" ? userIcon : botIcon} />
-          }
-        />
-        <div className="flex flex-col">
-          <p className="text-md">{user_props[user_type]}</p>
-          {user_type != "user" && (
-            <p className="text-small text-default-500">{ai_model}</p>
-          )}
-        </div>
-      </CardHeader>
-      <Divider />
+    <Card className=" w-fit my-3 bg-green-400 ">
+      {/*       {user_type != "user" && (
+        <>
+        <CardHeader className={"flex gap-3 "}>
+          <Avatar
+            size="sm"
+            isBordered
+            icon={
+              <FontAwesomeIcon
+                icon={user_type == "user" ? userIcon : botIcon}
+              />
+            }
+          />
+
+          <div className="flex flex-col">
+            <p className="text-md">{user_props[user_type]}</p>
+            {user_type != "user" && (
+              <p className="text-small text-default-500">{ai_model}</p>
+            )}
+          </div>
+        </CardHeader>
+
+        </>
+      )} */}
+
       <CardBody>
         <p>{message}</p>
       </CardBody>

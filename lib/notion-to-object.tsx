@@ -1,5 +1,4 @@
 export const getEmulationItems = (response: any) => {
-  console.log(response);
   const emulationItems = response.map((item: any) => {
     return {
       id: item.id,

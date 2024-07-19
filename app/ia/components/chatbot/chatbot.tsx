@@ -4,11 +4,28 @@ import { faPaperPlane as sendIcon } from "@fortawesome/free-solid-svg-icons";
 import { useChat } from "ai/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MessageCard from "./messageCard";
+import ModelSelection from "./modelSelection";
+import { useState } from "react";
 
-export default function Chatbot({ isLoading }: { isLoading: boolean }) {
-  const ai_model = "GPT-3";
+export default function Chatbot() {
+  const models: any = [
+    {
+      value: "OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5",
+      label: "OpenAssistant",
+    },
 
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
+    {
+      value: "mistralai/Mixtral-8x7B-Instruct-v0.1",
+      label: "mistralai",
+    },
+  ];
+  const [model, setmodel] = useState(
+    "OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5"
+  );
+  const { messages, isLoading, input, handleInputChange, handleSubmit } =
+    useChat({
+      body: model,
+    });
 
   return (
     <>
@@ -19,7 +36,7 @@ export default function Chatbot({ isLoading }: { isLoading: boolean }) {
           <MessageCard
             key={index}
             user_type={message.role}
-            ai_model={ai_model}
+            ai_model={model}
             message={message.content}
           />
         </div>
@@ -28,9 +45,13 @@ export default function Chatbot({ isLoading }: { isLoading: boolean }) {
       <Spacer y={1} />
 
       <form
-        onSubmit={handleSubmit}
-        className="flex flex-row w-full h-10 content-center justify-center gap-2"
+        onSubmit={() => handleSubmit(event)}
+        className="flex flex-row w-full h-auto items-center justify-center gap-2"
       >
+        <div className="w-1/3">
+          <ModelSelection handleSelection={setmodel} value={model} />
+        </div>
+
         <Input
           disabled={isLoading}
           type="text"

@@ -27,7 +27,6 @@ export default function EmulationTable({ data }: { data: any }) {
     },
   ];
 
-  console.log("data", data);
   return (
     <Table aria-label="Emuladores">
       <TableHeader columns={columns}>
