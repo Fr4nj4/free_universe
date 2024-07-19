@@ -24,7 +24,7 @@ export default function MessageCard({
   /*   const avatar = user_type === "user" ? <Avatar isBordered color="success" src="https://i.pravatar.cc/150" />: <Avatar isBordered color="success" src="https://i.pravatar.cc/150" />;
    */
   return (
-    <Card className=" w-fit my-3 bg-green-400 ">
+    <Card className=" w-fit my-3 bg-cardbg ">
       {/*       {user_type != "user" && (
         <>
         <CardHeader className={"flex gap-3 "}>

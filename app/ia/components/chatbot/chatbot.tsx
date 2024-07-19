@@ -67,12 +67,12 @@ export default function Chatbot() {
           fullWidth
           size="lg"
           isIconOnly
-          color="warning"
+          color="primary"
           type="submit"
           variant="light"
           aria-label="Enviar"
         >
-          <FontAwesomeIcon icon={sendIcon} color="yellow" />
+          <FontAwesomeIcon icon={sendIcon} color="primary" />
         </Button>
       </form>
     </>
