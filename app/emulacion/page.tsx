@@ -6,7 +6,7 @@ export default async function DocsPage() {
   const data = await getEmulators();
 
   //console.log("consulta notions", data);
-  return ( 
+  return (
     <div>
       <h1 className={title()}>Universo Emulacion</h1>
 

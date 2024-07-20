@@ -9,26 +9,15 @@ import {
 } from "@nextui-org/react";
 import { Input } from "@nextui-org/input";
 import { faPaperPlane as sendIcon } from "@fortawesome/free-solid-svg-icons";
-
 import { faRobot as botIcon } from "@fortawesome/free-solid-svg-icons";
 import { useChat } from "ai/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import MessageCard from "./messageCard";
-import ModelSelection from "./modelSelection";
 import { useState } from "react";
 
-export default function Chatbotv2() {
-  const models: any = [
-    {
-      value: "OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5",
-      label: "OpenAssistant",
-    },
+import MessageCard from "./messageCard";
+import ModelSelection from "./modelSelection";
 
-    {
-      value: "mistralai/Mixtral-8x7B-Instruct-v0.1",
-      label: "mistralai",
-    },
-  ];
+export default function Chatbotv2() {
   const [model, setmodel] = useState([
     "OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5",
   ]);
@@ -85,13 +74,13 @@ export default function Chatbotv2() {
             isIconOnly
             aria-label="Enviar"
             className="p-4 w-1/8"
-            color="primary"
+            color="secondary"
             isLoading={isLoading}
             size="lg"
             type="submit"
             variant="light"
           >
-            <FontAwesomeIcon color="primary" icon={sendIcon} />
+            <FontAwesomeIcon icon={sendIcon} />
           </Button>
         </form>
       </CardFooter>

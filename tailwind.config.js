@@ -1,51 +1,30 @@
-import {nextui} from '@nextui-org/theme'
+import { nextui } from "@nextui-org/theme";
+
+const { lightTheme, darkTheme } = require("./styles/themes");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
   },
   darkMode: "class",
-  plugins: [nextui({ prefix: "nextui", // prefix for themes variables
-    addCommonColors: false, // override common colors (e.g. "blue", "green", "pink").
-    defaultTheme: "light", // default theme from the themes object
-    defaultExtendTheme: "light", // default theme to extend on custom themes
-    layout: {}, // common layout tokens (applied to all themes)
-    themes: {
-      light: {
-        layout: {}, // light theme layout tokens
-        colors: {
-          fondo:"#cce3fd",
-        }, // light theme colors
+  plugins: [
+    nextui({
+      prefix: "nextui", // prefix for themes variables
+      addCommonColors: false, // override common colors (e.g. "blue", "green", "pink").
+      defaultTheme: "light", // default theme from the themes object
+      defaultExtendTheme: "light", // default theme to extend on custom themes
+      layout: {}, // common layout tokens (applied to all themes)
+      themes: {
+        light: lightTheme,
+        dark: darkTheme,
+        // ... custom themes
       },
-      dark: {
-        layout: {}, // dark theme layout tokens
-        colors: {
-          fondo:"#0B132B",
-          primary:"#6FFFE9",
-          cardbg:"#3A506B",
-          white: "#FFFFFF",
-          black: "#000000",
-          blue: {
-            50: "#e6f1fe",
-            100: "#cce3fd",
-            200: "#99c7fb",
-            300: "#66aaf9",
-            400: "#338ef7",
-            500: "#006FEE",
-            600: "#005bc4",
-            700: "#004493",
-            800: "#002e62",
-            900: "#001731",
-          },
-          // .. rest of the colors
-        }// dark theme colors
-      },
-      // ... custom themes
-    },})],
-}
+    }),
+  ],
+};

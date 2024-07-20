@@ -9,6 +9,7 @@ import {
   TableCell,
 } from "@nextui-org/table";
 import { Link } from "@nextui-org/link";
+
 import CalificationStars from "@/components/calification-stars";
 
 export default function EmulationTable({ data }: { data: any }) {
@@ -30,13 +31,22 @@ export default function EmulationTable({ data }: { data: any }) {
   return (
     <Table aria-label="Emuladores">
       <TableHeader columns={columns}>
-        {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
+        {(column) => (
+          <TableColumn key={column.key} className="text-complement">
+            {column.label}
+          </TableColumn>
+        )}
       </TableHeader>
       <TableBody>
         {data.map((item: any) => (
           <TableRow key={item.id}>
             <TableCell>
-              <Link color="warning" isExternal showAnchorIcon href={item.link}>
+              <Link
+                isExternal
+                showAnchorIcon
+                color="secondary"
+                href={item.link}
+              >
                 {item.nombre}
               </Link>
             </TableCell>
