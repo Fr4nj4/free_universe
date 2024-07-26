@@ -36,7 +36,7 @@ export default function EmulationTable({ data }: { data: any }) {
         {data.map((item: any) => (
           <TableRow key={item.id}>
             <TableCell>
-              <Link color="warning" isExternal showAnchorIcon href={item.link}>
+              <Link color="primary" isExternal showAnchorIcon href={item.link}>
                 {item.nombre}
               </Link>
             </TableCell>
