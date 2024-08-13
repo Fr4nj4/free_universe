@@ -14,8 +14,8 @@ export const siteConfig = {
     },
 
     {
-      label: "Aplicaciones",
-      href: "/apps",
+      label: "Series",
+      href: "/series",
     },
 
     {
