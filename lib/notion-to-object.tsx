@@ -8,11 +8,12 @@ export const getEmulationItems = (response: any) => {
       comentarios: getTextValue(item.properties.Comentarios, "Sin comentarios"),
       link: getTextValue(
         item.properties.Link,
-        "No se ha proporcionado un link"
+        "No se ha proporcionado un link",
       ),
       nombre: getTitleValue(item.properties.Nombre, "Sin nombre"),
     };
   });
+
   return emulationItems;
 };
 

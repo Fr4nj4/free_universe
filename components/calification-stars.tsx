@@ -14,10 +14,10 @@ const CalificationStars: React.FC<CalificationStarsProps> = ({ numStars }) => {
     for (let i = 0; i < maxStars; i++) {
       if (i < numStars) {
         stars.push(
-          <FontAwesomeIcon key={i} icon={filledStar} color="yellow" />
+          <FontAwesomeIcon key={i} color="yellow" icon={filledStar} />,
         );
       } else {
-        stars.push(<FontAwesomeIcon key={i} icon={emptyStar} color="yellow" />);
+        stars.push(<FontAwesomeIcon key={i} color="yellow" icon={emptyStar} />);
       }
     }
 

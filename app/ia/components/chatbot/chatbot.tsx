@@ -1,11 +1,12 @@
-import { Button, Textarea, Spacer } from "@nextui-org/react";
+import { Button, Spacer } from "@nextui-org/react";
 import { Input } from "@nextui-org/input";
 import { faPaperPlane as sendIcon } from "@fortawesome/free-solid-svg-icons";
 import { useChat } from "ai/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+
 import MessageCard from "./messageCard";
 import ModelSelection from "./modelSelection";
-import { useState } from "react";
 
 export default function Chatbot() {
   const models: any = [
@@ -20,24 +21,24 @@ export default function Chatbot() {
     },
   ];
   const [model, setmodel] = useState(
-    "OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5"
+    "OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5",
   );
   const { messages, isLoading, input, handleInputChange, handleSubmit } =
     useChat({
-      body: model,
+      body: { model },
     });
 
   return (
     <>
       {messages.map((message, index) => (
         <div
+          key={index}
           className={`gap-5 w-full flex justify-${message.role == "user" ? "end" : "start"}`}
         >
           <MessageCard
-            key={index}
-            user_type={message.role}
             ai_model={model}
             message={message.content}
+            user_type={message.role}
           />
         </div>
       ))}
@@ -45,8 +46,8 @@ export default function Chatbot() {
       <Spacer y={1} />
 
       <form
-        onSubmit={() => handleSubmit(event)}
         className="flex flex-row w-full h-auto items-center justify-center gap-2"
+        onSubmit={() => handleSubmit(event)}
       >
         <div className="w-1/3">
           <ModelSelection handleSelection={setmodel} value={model} />
@@ -54,25 +55,25 @@ export default function Chatbot() {
 
         <Input
           disabled={isLoading}
-          type="text"
           placeholder="Escribe tu mensaje aquí..."
+          type="text"
           value={input}
           onChange={handleInputChange}
         />
         <Spacer y={0.5} />
 
         <Button
-          isLoading={isLoading}
-          className="p-4 w-1/8"
           fullWidth
-          size="lg"
           isIconOnly
+          aria-label="Enviar"
+          className="p-4 w-1/8"
           color="primary"
+          isLoading={isLoading}
+          size="lg"
           type="submit"
           variant="light"
-          aria-label="Enviar"
         >
-          <FontAwesomeIcon icon={sendIcon} color="primary" />
+          <FontAwesomeIcon color="primary" icon={sendIcon} />
         </Button>
       </form>
     </>

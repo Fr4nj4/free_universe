@@ -1,11 +1,11 @@
 import { Client } from "@notionhq/client";
 import { NextResponse } from "next/server";
 
-import { getSeries } from "../../utils/notion-to-object";
+import { getPeliculas } from "../../utils/notion-to-object";
 
 export async function GET(req: Request) {
   try {
-    const databaseId = process.env.NOTION_DB_SERIES;
+    const databaseId = process.env.NOTION_DB_PELICULAS;
     const notion = new Client({
       auth: process.env.NOTION_SECRET,
     });
@@ -16,7 +16,7 @@ export async function GET(req: Request) {
     });
 
     const response = {
-      items: getSeries(responseNotion.results),
+      items: getPeliculas(responseNotion.results),
       next_cursor: responseNotion.next_cursor,
       has_more: responseNotion.has_more,
     };
